@@ -30,11 +30,14 @@ class Notification(CreationMetadataMixin, Base):
     )
 
     payload: Mapped[dict[str, Any]] = mapped_column(JSON)
+    
     is_push_notification: Mapped[bool] = mapped_column(default=False)
     user_id: Mapped[int] = mapped_column(
         ForeignKey("users.id"),
         index=True,
     )
+
+    is_read: Mapped[bool] = mapped_column(default=False)
 
     @classmethod
     def from_JSON(self, nr: "NotificationRequest") -> Self:
