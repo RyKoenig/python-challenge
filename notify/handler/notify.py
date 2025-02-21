@@ -5,7 +5,8 @@ from sqlalchemy.exc import NoResultFound
 
 from lib.data import DB
 from notify.data import notifications
-from notify.model import Notification, NotificationRequest, NotificationResponse
+from notify.model import (Notification, NotificationRequest,
+                          NotificationResponse)
 
 
 class Notify:

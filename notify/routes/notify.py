@@ -34,5 +34,12 @@ def notify(db: DB) -> APIRouter:
         handler: Annotated[Notify, Depends(get_handler)], req: NotificationRequest
     ) -> NotificationResponse:
         return handler.post_notification(req)
+    
+    @router.post("/notification/{notificaiton_id}")
+    async def post_notification(
+        handler: Annotated[Notify, Depends(get_handler)],
+        notificaiton_id: int,
+    ) -> NotificationResponse:
+        return handler.post_notification(notificaiton_id)
 
     return router
